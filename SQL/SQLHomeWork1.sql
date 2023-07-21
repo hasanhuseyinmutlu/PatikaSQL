@@ -54,3 +54,47 @@ select replacement_cost, count(*) from  film group by replacement_cost having co
 select count(*),store_id from customer group by store_id
 --city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıran country_id bilgisini ve şehir sayısını paylaşınız.
 SELECT country_id, COUNT(city) FROM city GROUP BY country_id ORDER BY COUNT(city) DESC LIMIT 1;
+--test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+CREATE TABLE employee (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(50),
+  birthday DATE,
+  email VARCHAR(100)
+);
+
+--Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 5 adet veri ekleyelim.
+INSERT INTO employee (name, birthday, email)
+VALUES
+  ('John Doe', '1990-05-15', 'john.doe@example.com'),
+  ('Jane Smith', '1988-09-22', 'jane.smith@example.com'),
+  ('Michael Johnson', '1985-11-03', 'michael.johnson@example.com'),
+  ('Emily Brown', '1992-03-07', 'emily.brown@example.com'),
+  ('David Lee', '1987-12-18', 'david.lee@example.com');
+
+--Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım.
+UPDATE employee
+SET name = 'John Smith'
+WHERE id = 1;
+UPDATE employee
+SET birthday = '1991-08-25'
+WHERE id = 2;
+UPDATE employee
+SET email = 'jane.smith@example.org'
+WHERE id = 3;
+UPDATE employee
+SET name = 'Michael Brown', birthday = '1986-05-20'
+WHERE id = 4;
+UPDATE employee
+SET email = 'emily.brown@example.org', birthday = '1993-02-14'
+WHERE id = 5;
+--Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+DELETE FROM employee
+WHERE name = 'John Smith';
+DELETE FROM employee
+WHERE birthday = '1991-08-25';
+DELETE FROM employee
+WHERE email = 'jane.smith@example.org';
+DELETE FROM employee
+WHERE name = 'Michael Brown' AND birthday = '1986-05-20';
+DELETE FROM employee
+WHERE email = 'emily.brown@example.org' AND birthday = '1993-02-14';
