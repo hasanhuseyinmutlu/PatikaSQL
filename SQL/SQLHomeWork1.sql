@@ -32,3 +32,9 @@ SELECT COUNT(*) FROM film WHERE title LIKE 'T%' AND rating= 'G';
 SELECT country from country WHERE length(country) = 5
 --city tablosundaki şehir isimlerinin kaç tanesi 'R' veya r karakteri ile biter?
 SELECT COUNT(*) FROM city WHERE city ILIKE '%R';
+--film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+select * from film where title ilike '%n' order by length desc limit 5;
+--film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci(6,7,8,9,10) 5 filmi(6,7,8,9,10) sıralayınız.
+SELECT title length FROM film WHERE title LIKE '%n' ORDER BY length LIMIT 6;
+--customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+select * from customer where store_id = 1  order by last_name limit 4
